@@ -1,0 +1,17 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = pd.DataFrame({
+    "Study_Hours": [2, 3, 4, 5, 6, 7, 8],
+    "Exam_Score": [45, 50, 55, 65, 70, 78, 85]
+})
+
+correlation = data["Study_Hours"].corr(data["Exam_Score"])
+
+print("Correlation Coefficient:", correlation)
+
+plt.scatter(data["Study_Hours"], data["Exam_Score"])
+plt.xlabel("Study Hours")
+plt.ylabel("Exam Score")
+plt.title("Study Time vs Exam Score")
+plt.show()
