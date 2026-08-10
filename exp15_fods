@@ -1,0 +1,36 @@
+import pandas as pd
+
+data = pd.DataFrame({
+    "City": ["Chennai", "Bangalore", "Delhi"],
+    "Temperatures": [
+        [30, 32, 31, 33, 35],
+        [22, 24, 23, 25, 26],
+        [25, 30, 35, 40, 42]
+    ]
+})
+
+results = []
+
+for i, row in data.iterrows():
+    temp = row["Temperatures"]
+
+    mean = sum(temp) / len(temp)
+    std = pd.Series(temp).std()
+    temp_range = max(temp) - min(temp)
+
+    results.append([row["City"], mean, std, temp_range])
+
+result = pd.DataFrame(
+    results,
+    columns=["City", "Mean", "Standard Deviation", "Range"]
+)
+
+print(result)
+
+highest_range = result.loc[result["Range"].idxmax(), "City"]
+most_consistent = result.loc[
+    result["Standard Deviation"].idxmin(), "City"
+]
+
+print("\nHighest Temperature Range:", highest_range)
+print("Most Consistent Temperature:", most_consistent)
