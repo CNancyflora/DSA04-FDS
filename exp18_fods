@@ -1,0 +1,13 @@
+import pandas as pd
+
+data = {
+    'post': ['P1', 'P2', 'P3', 'P4', 'P5', 'P6'],
+    'likes': [100, 200, 100, 300, 200, 100]
+}
+
+df = pd.DataFrame(data)
+
+frequency = df['likes'].value_counts().sort_index()
+
+print("Frequency Distribution of Likes:")
+print(frequency)
