@@ -1,0 +1,26 @@
+import pandas as pd
+from collections import Counter
+
+data = {
+    'review': [
+        'good product',
+        'very good product',
+        'good quality product',
+        'excellent product'
+    ]
+}
+
+df = pd.DataFrame(data)
+
+# Combine all reviews
+text = ' '.join(df['review']).lower()
+
+# Split into words
+words = text.split()
+
+# Calculate frequency
+frequency = Counter(words)
+
+print("Word Frequency Distribution:")
+for word, count in frequency.items():
+    print(word, ":", count)
