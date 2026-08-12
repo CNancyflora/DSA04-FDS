@@ -1,0 +1,15 @@
+import pandas as pd
+
+# Sample sales data
+data = {
+    'customer': ['C1', 'C2', 'C3', 'C4', 'C5', 'C6'],
+    'age': [21, 25, 21, 30, 25, 21]
+}
+
+df = pd.DataFrame(data)
+
+# Frequency distribution of ages
+frequency = df['age'].value_counts().sort_index()
+
+print("Frequency Distribution of Customer Ages:")
+print(frequency)
