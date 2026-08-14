@@ -1,0 +1,19 @@
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv("rare_elements.csv")
+data = df.iloc[:,0].dropna().values
+
+n = int(input("Sample size: "))
+conf = float(input("Confidence level (0.95): "))
+
+sample = np.random.choice(data, n, replace=False)
+
+mean = np.mean(sample)
+se = np.std(sample, ddof=1) / np.sqrt(n)
+
+z = 1.96
+ci = (mean-z*se, mean+z*se)
+
+print("Point Estimate =", mean)
+print("95% Confidence Interval =", ci)
